@@ -1,5 +1,5 @@
 #import "ColoredMixin.h"
-@interface FatClass : NSObject <ColoredMixin>
+@interface FatClass : NSObject <ColoredMixin, NSTextFieldDelegate>
 {
 }
 

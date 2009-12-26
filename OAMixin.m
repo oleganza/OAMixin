@@ -11,10 +11,13 @@
 
 @implementation OAMixin
 
-+ (void) addToClass:(Class) cls
++ (void) addToClass:(Class) klass
 {
-  NSLog(@"Adding %@ to %@", self, cls);
-  // TODO: copy ivars, methods, properties and class methods
+  NSLog(@"Adding mixin %@ to class %@", self, klass);
+  // TODO: create a new subclass for a klass's superclass
+  // TODO: copy ivars, methods, properties and class methods to this subclass
+  // TODO: switch klass's superclass to the mixin
+  
 }
 
 + (void) initializeMixinsForClass: (Class) cls
@@ -27,7 +30,16 @@
   while (index < outCount)
   {
     protocol = protocols[index++];
-    NSLog(@"Class %@ has a protocol %s", cls, protocol_getName(protocol));
+    const char* name = protocol_getName(protocol);
+    NSLog(@"Class %@ has a protocol %s", cls, name);
+    Class mixin = objc_getClass(name);
+    Class mixinmeta = objc_getMetaClass(name);
+    if (mixin && mixinmeta && 
+        class_respondsToSelector(mixinmeta, @selector(isSubclassOfClass:)) && 
+        [mixin isSubclassOfClass:[OAMixin class]])
+    {
+      [mixin addToClass:cls];
+    }
   }
   free(protocols);
 }
