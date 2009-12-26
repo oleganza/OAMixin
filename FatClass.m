@@ -3,6 +3,7 @@
 
 @implementation FatClass
 
+@dynamic color;
 + (void) initialize
 {
   [OAMixin initializeMixinsForClass:self];
