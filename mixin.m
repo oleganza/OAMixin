@@ -6,7 +6,8 @@ int main (int argc, const char * argv[])
   
   FatClass* object = [[[FatClass alloc] init] autorelease];
   
-  NSLog(@"isColored = %d", (NSUInteger)[object isColored]);
+  NSLog(@"isColored = %d",   (NSUInteger)[object isColored]);
+  NSLog(@"isColorable = %d", (NSUInteger)[object isColorable]);
   
   [pool drain];
   return 0;

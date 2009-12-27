@@ -4,6 +4,7 @@
 @protocol ColoredMixin
 @optional
 - (BOOL) isColored;
+- (BOOL) isColorable;
 @property(nonatomic, retain) NSColor* color;
 @end
 

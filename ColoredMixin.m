@@ -14,4 +14,9 @@
   return !!self.color;
 }
 
+- (BOOL) isColorable
+{
+  return YES;
+}
+
 @end

@@ -9,9 +9,4 @@
   [OAMixin initializeMixinsForClass:self];
 }
 
-- (BOOL) isColored
-{
-  return NO;
-}
-
 @end
